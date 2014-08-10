@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#C0C0C0">
+
+    <Button
+        android:id="@+id/btPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
+        android:text="Power" />
+
+    <Button
+        android:id="@+id/btMute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btPower"
+        android:layout_alignBottom="@+id/btPower"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="34dp"
+        android:background="@drawable/custom_button"
+        android:text="Mute" />
+
+    <Button
+        android:id="@+id/btOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btMute"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="114dp"
+        android:background="@drawable/custom_button"
+        android:text="OK" />
+
+    <Button
+        android:id="@+id/btReduceVolumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btOK"
+        android:layout_alignBottom="@+id/btOK"
+        android:layout_alignRight="@+id/btMute"
+        android:background="@drawable/custom_button"
+        android:text="Vol -" />
+
+    <Button
+        android:id="@+id/btIncreVolumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btOK"
+        android:layout_alignBottom="@+id/btOK"
+        android:layout_alignRight="@+id/btPower"
+        android:background="@drawable/custom_button"
+        android:text="Vol +" />
+
+    <Button
+        android:id="@+id/btPrevChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btOK"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/custom_button"
+        android:text="Pre Ch" />
+
+    <Button
+        android:id="@+id/btNextChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btIncreVolumn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/custom_button"
+        android:text="Next Ch" />
+
+    <Button
+        android:id="@+id/btSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btPower"
+        android:layout_below="@+id/btPrevChannel"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
+        android:text="Search" />
+
+    <Button
+        android:id="@+id/btExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btSearch"
+        android:layout_alignBottom="@+id/btSearch"
+        android:layout_alignLeft="@+id/btMute"
+        android:background="@drawable/custom_button"
+        android:text="Exit" />
+
+</RelativeLayout>

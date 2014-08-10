@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/imScan"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="ifRoom"
+        android:title="@string/scan"/>
+    <item
+        android:id="@+id/imHelp"
+        android:icon="@android:drawable/ic_menu_help"
+        android:showAsAction="ifRoom"
+        android:title="@string/help"/>
+    <item
+        android:id="@+id/imAboutUs"
+        android:title="@string/aboutUs"/>
+    <item
+        android:id="@+id/imExit"
+        android:title="@string/exit"/>
+
+</menu>

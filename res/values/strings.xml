@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IANSD</string>
+    <string name="tvSecondFragment">Hãy nhập yêu cầu của bạn vào đây :</string>
+    <string name="title">IANSD - [BK-TBG]</string>
+    <string name="voice">Lắng nghe lệnh</string>
+    <string name="prev">Trở lại</string>
+    <string name="next">Tiếp theo</string>
+    <string name="aboutUs">Thông tin</string>
+    <string name="exit">Thoát</string>
+    <string name="hint">Hãy nhập yêu cầu vào đây</string>
+    <string name="scan">Tìm Robot</string>
+    <string name="help">Giúp đỡ</string>
+
+</resources>
