@@ -24,33 +24,40 @@ public final class R {
         public static final int custom_button=0x7f020000;
         public static final int custom_edittext=0x7f020001;
         public static final int custom_textview=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
+        public static final int iansd_icon=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f080004;
-        public static final int btExit=0x7f08000c;
-        public static final int btIncreVolumn=0x7f080008;
-        public static final int btMute=0x7f080006;
+        public static final int btExit=0x7f080010;
+        public static final int btIncreVolumn=0x7f08000b;
+        public static final int btKeypad=0x7f08000e;
+        public static final int btMute=0x7f080007;
         public static final int btNextChannel=0x7f08000a;
-        public static final int btOK=0x7f080003;
-        public static final int btPower=0x7f080005;
-        public static final int btPrevChannel=0x7f080009;
-        public static final int btReduceVolumn=0x7f080007;
-        public static final int btSearch=0x7f08000b;
+        public static final int btOK=0x7f080002;
+        public static final int btPower=0x7f080008;
+        public static final int btPrevChannel=0x7f08000c;
+        public static final int btReduceVolumn=0x7f080009;
+        public static final int btSearch=0x7f08000d;
+        public static final int btSmartHub=0x7f08000f;
         public static final int btVoice=0x7f080000;
-        public static final int etOrder=0x7f080002;
-        public static final int imAboutUs=0x7f08000f;
-        public static final int imExit=0x7f080010;
-        public static final int imHelp=0x7f08000e;
-        public static final int imScan=0x7f08000d;
-        public static final int mainPager=0x7f080001;
+        public static final int etOrder=0x7f080006;
+        public static final int etText=0x7f080001;
+        public static final int imAboutUs=0x7f080013;
+        public static final int imExit=0x7f080014;
+        public static final int imHelp=0x7f080012;
+        public static final int imScan=0x7f080011;
+        public static final int layout=0x7f080004;
+        public static final int mainPager=0x7f080005;
+        public static final int svContent=0x7f080003;
     }
     public static final class layout {
-        public static final int first_fragment=0x7f030000;
-        public static final int fourth_fragment=0x7f030001;
-        public static final int main_activity=0x7f030002;
-        public static final int second_fragment=0x7f030003;
-        public static final int third_fragment=0x7f030004;
+        public static final int about_us=0x7f030000;
+        public static final int first_fragment=0x7f030001;
+        public static final int fourth_fragment=0x7f030002;
+        public static final int help_layout=0x7f030003;
+        public static final int main_activity=0x7f030004;
+        public static final int second_fragment=0x7f030005;
+        public static final int third_fragment=0x7f030006;
     }
     public static final class menu {
         public static final int main_menu=0x7f070000;

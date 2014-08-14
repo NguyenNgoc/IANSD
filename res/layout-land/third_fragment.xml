@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btMute"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/custom_button"
+            android:text="Mute" />
+
+        <Button
+            android:id="@+id/btPower"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/custom_button"
+            android:text="Power" />
+
+        <Button
+            android:id="@+id/btReduceVolumn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btOK"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/custom_button"
+            android:text="Vol -" />
+
+        <Button
+            android:id="@+id/btNextChannel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btMute"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/custom_button"
+            android:text="Next Ch" 
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="3dp"/>
+
+        <Button
+            android:id="@+id/btOK"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btNextChannel"
+            android:layout_below="@+id/btNextChannel"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/custom_button"
+            android:text="OK" />
+
+        <Button
+            android:id="@+id/btIncreVolumn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/btOK"
+            android:background="@drawable/custom_button"
+            android:text="Vol +" />
+
+        <Button
+            android:id="@+id/btPrevChannel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btOK"
+            android:layout_below="@+id/btOK"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/custom_button"
+            android:text="Pre Ch" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="217dp"
+        android:layout_height="fill_parent" >
+
+        <Button
+            android:id="@+id/btSearch"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/btKeypad"
+            android:background="@drawable/custom_button"
+            android:text="Search" 
+            android:layout_marginTop="3dp"/>
+
+        <Button
+            android:id="@+id/btKeypad"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/custom_button"
+            android:text="Keypad" 
+            android:layout_marginBottom="3dp"/>
+
+        <Button
+            android:id="@+id/btSmartHub"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/custom_button"
+            android:text="Smart Hub"
+            android:textSize="14sp" 
+            android:layout_marginBottom="3dp"/>
+
+        <Button
+            android:id="@+id/btExit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btSearch"
+            android:layout_alignBottom="@+id/btSearch"
+            android:layout_alignLeft="@+id/btSmartHub"
+            android:background="@drawable/custom_button"
+            android:text="Exit" />
+
+    </RelativeLayout>
+
+</LinearLayout>

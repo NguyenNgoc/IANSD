@@ -3,27 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C0C0C0"
+    android:padding="5dp"
     android:orientation="vertical" >
 
     <EditText
         android:id="@+id/etOrder"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:background="@drawable/custom_edittext"
         android:ems="10"
         android:hint="@string/hint"
         android:maxLines="5"
         android:minLines="5" >
-
-        <requestFocus />
     </EditText>
 
     <Button
         android:id="@+id/btOK"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
         android:text="OK"
@@ -34,7 +32,7 @@
         android:id="@+id/btVoice"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
         android:text="@string/voice"

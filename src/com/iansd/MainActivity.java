@@ -1,5 +1,6 @@
 package com.iansd;
 
+import SDK_TV.Controller;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
@@ -9,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.fpt.robot.app.RobotFragmentActivity;
 
@@ -26,11 +28,14 @@ public class MainActivity extends RobotFragmentActivity implements TabListener {
 		setContentView(R.layout.main_activity);
 
 		init();
+
+		TV.start();
 	}
 
 	private void init() {
-		Robot.createRobot();
-
+		TV.context = this;
+		Controller.context = this;
+		Util.context = this;
 		mainPager = (ViewPager) findViewById(R.id.mainPager);
 		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -73,6 +78,15 @@ public class MainActivity extends RobotFragmentActivity implements TabListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.imScan: {
+			if (getRobot() == null) {
+				scan();
+				return false;
+			} else {
+				Toast.makeText(getApplicationContext(), "Đã kết nối tới Robot",
+						Toast.LENGTH_SHORT).show();
+			}
+			Robot.createRobot(getRobot());
+			Controller.currentRobot = getRobot();
 			break;
 		}
 		case R.id.imHelp: {
@@ -82,10 +96,10 @@ public class MainActivity extends RobotFragmentActivity implements TabListener {
 			break;
 		}
 		case R.id.imExit: {
-			break;
+			finish();
 		}
 		}
-		return super.onOptionsItemSelected(item);
+		return true;
 	}
 
 	@Override
@@ -102,4 +116,5 @@ public class MainActivity extends RobotFragmentActivity implements TabListener {
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 
 	}
+
 }

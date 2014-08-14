@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/SDK_TV/Controller.java=UTF-8
+encoding//src/com/fragments/FirstFragment.java=UTF-8
+encoding//src/com/fragments/FourthFragment.java=UTF-8
+encoding//src/com/fragments/SecondFragment.java=UTF-8
+encoding//src/com/fragments/ThirdFragment.java=UTF-8
+encoding//src/com/iansd/Behaviors.java=UTF-8
 encoding//src/com/iansd/MainActivity.java=UTF-8
 encoding//src/com/iansd/Robot.java=UTF-8
 encoding//src/com/iansd/TV.java=UTF-8

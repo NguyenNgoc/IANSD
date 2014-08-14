@@ -7,12 +7,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.util.Log;
+
 public class Util {
 
-	public static String makeJSONText(String type, String desc) {
-		String JSONtext = "{\"type\": \"" + type + "\"," + "\"desc\": \""
-				+ desc + "\"}";
-		return JSONtext;
+	public static Context context;
+
+	public static void log(String str) {
+		Log.i("IANSD", str);
+	}
+
+	public static String getMacAddress(Context context) {
+		WifiManager wifiManager = (WifiManager) context
+				.getSystemService(Context.WIFI_SERVICE);
+		return wifiManager.getConnectionInfo().getMacAddress();
 	}
 
 	public static void makeHttpRequest(final String urlString,
@@ -75,4 +85,5 @@ public class Util {
 
 		public abstract void onError(String error);
 	}
+
 }

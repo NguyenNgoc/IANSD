@@ -1,12 +1,14 @@
 package com.fragments;
 
+import SDK_TV.Controller;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.fpt.lib.asr.Languages;
 import com.fpt.lib.asr.Result;
@@ -36,6 +38,16 @@ public class FirstFragment extends RobotFragment implements SpeakToTextListener 
 
 			@Override
 			public void onClick(View arg0) {
+				if (getRobotActivity().getRobot() != null) {
+					Robot.createRobot(getRobotActivity().getRobot());
+					Controller.currentRobot = getRobotActivity().getRobot();
+				} else {
+					Toast.makeText(getRobotActivity(),
+							"Bạn hãy chọn Robot trước", Toast.LENGTH_SHORT)
+							.show();
+					getRobotActivity().scan();
+					return;
+				}
 				new Thread(new Runnable() {
 					@Override
 					public void run() {
@@ -47,40 +59,79 @@ public class FirstFragment extends RobotFragment implements SpeakToTextListener 
 		return view;
 	}
 
+	private ProgressDialog progressDialog = null;
+
+	protected void showProgress(final String message) {
+		getRobotActivity().runOnUiThread(new Runnable() {
+			public void run() {
+				if (progressDialog == null) {
+					progressDialog = new ProgressDialog(getRobotActivity());
+				}
+				if (message != null) {
+					progressDialog.setMessage(message);
+				}
+				progressDialog.setIndeterminate(true);
+				progressDialog.setCancelable(true);
+				progressDialog.show();
+			}
+		});
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected void cancelProgress() {
+		getRobotActivity().runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				if (progressDialog != null) {
+					// progressDialog.cancel();
+					progressDialog.dismiss();
+				}
+			}
+		});
+	}
+
 	@Override
 	public void onWaiting() {
-
+		showProgress("Waiting...");
 	}
 
 	@Override
 	public void onRecording() {
-		Log.i("iansd", "Recording");
+		showProgress("Recording...");
 	}
 
 	@Override
 	public void onError(Exception ex) {
-		Log.i("iansd", "Error");
+		showProgress("Error...");
+		cancelProgress();
 	}
 
 	@Override
 	public void onTimeout() {
-		Log.i("iansd", "Timeout");
+		showProgress("Timeout...");
+		cancelProgress();
 	}
 
 	@Override
 	public void onProcessing() {
-		Log.i("iansd", "Processing");
+		showProgress("Processing...");
 	}
 
 	@Override
 	public void onResult(Result result) {
 		String message = result.result[0].alternative[0].transcript;
-		Log.i("iansd", message);
 		TV.receiveOrder(message);
+		cancelProgress();
 	}
 
 	@Override
 	public void onStopped() {
-		Log.i("iansd", "Stopped");
+		showProgress("Stopped...");
+		cancelProgress();
 	}
+
 }
