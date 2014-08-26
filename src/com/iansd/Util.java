@@ -7,9 +7,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.util.Log;
+
+import com.fpt.robot.RobotException;
+import com.fpt.robot.tts.RobotTextToSpeech;
 
 public class Util {
 
@@ -17,6 +21,14 @@ public class Util {
 
 	public static void log(String str) {
 		Log.i("IANSD", str);
+	}
+
+	public static void notifyError(String message) {
+		try {
+			RobotTextToSpeech.say(Robot.robotSpeaker, message, RobotTextToSpeech.ROBOT_TTS_LANG_VI);
+		} catch (RobotException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static String getMacAddress(Context context) {

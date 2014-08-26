@@ -29,22 +29,22 @@
             android:text="Power" />
 
         <Button
-            android:id="@+id/btReduceVolumn"
+            android:id="@+id/btLeft"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/btOK"
             android:layout_alignParentLeft="true"
             android:background="@drawable/custom_button"
-            android:text="Vol -" />
+            android:text="Left" />
 
         <Button
-            android:id="@+id/btNextChannel"
+            android:id="@+id/btUp"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btMute"
             android:layout_centerHorizontal="true"
             android:background="@drawable/custom_button"
-            android:text="Next Ch" 
+            android:text="Up" 
             android:layout_marginTop="10dp"
             android:layout_marginBottom="3dp"/>
 
@@ -52,31 +52,31 @@
             android:id="@+id/btOK"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/btNextChannel"
-            android:layout_below="@+id/btNextChannel"
+            android:layout_alignLeft="@+id/btUp"
+            android:layout_below="@+id/btUp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:background="@drawable/custom_button"
             android:text="OK" />
 
         <Button
-            android:id="@+id/btIncreVolumn"
+            android:id="@+id/btRight"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/btOK"
             android:background="@drawable/custom_button"
-            android:text="Vol +" />
+            android:text="Right" />
 
         <Button
-            android:id="@+id/btPrevChannel"
+            android:id="@+id/btDown"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/btOK"
             android:layout_below="@+id/btOK"
             android:layout_marginTop="3dp"
             android:background="@drawable/custom_button"
-            android:text="Pre Ch" />
+            android:text="Down" />
 
     </RelativeLayout>
 
@@ -85,45 +85,64 @@
         android:layout_height="fill_parent" >
 
         <Button
-            android:id="@+id/btSearch"
+            android:id="@+id/btMenu"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/btKeypad"
-            android:background="@drawable/custom_button"
-            android:text="Search" 
-            android:layout_marginTop="3dp"/>
-
-        <Button
-            android:id="@+id/btKeypad"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/custom_button"
-            android:text="Keypad" 
-            android:layout_marginBottom="3dp"/>
-
-        <Button
-            android:id="@+id/btSmartHub"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
             android:layout_marginLeft="5dp"
-            android:layout_alignParentTop="true"
             android:background="@drawable/custom_button"
-            android:text="Smart Hub"
-            android:textSize="14sp" 
-            android:layout_marginBottom="3dp"/>
+            android:text="Menu"/>
 
         <Button
             android:id="@+id/btExit"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btSearch"
-            android:layout_alignBottom="@+id/btSearch"
-            android:layout_alignLeft="@+id/btSmartHub"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:background="@drawable/custom_button"
             android:text="Exit" />
+
+        <Button
+            android:id="@+id/btVolUp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btMenu"
+            android:layout_below="@+id/btMenu"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/custom_button"
+            android:text="Vol +" />
+
+        <Button
+            android:id="@+id/btVolDown"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btVolUp"
+            android:layout_below="@+id/btVolUp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/custom_button"
+            android:text="Vol -" />
+
+        <Button
+            android:id="@+id/btPrev"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btVolDown"
+            android:layout_alignBottom="@+id/btVolDown"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/custom_button"
+            android:text="Prev" />
+
+        <Button
+            android:id="@+id/btNext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btVolUp"
+            android:layout_alignBottom="@+id/btVolUp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/custom_button"
+            android:text="Next" />
 
     </RelativeLayout>
 

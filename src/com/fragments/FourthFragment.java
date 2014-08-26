@@ -12,6 +12,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +28,7 @@ import com.fpt.lib.asr.Result;
 import com.fpt.lib.asr.SpeakToText;
 import com.fpt.lib.asr.SpeakToTextListener;
 import com.fpt.robot.app.RobotFragment;
+import com.fpt.robot.app.RobotFragmentActivity;
 import com.iansd.R;
 import com.iansd.Robot;
 import com.iansd.TV;
@@ -32,13 +36,14 @@ import com.iansd.TV;
 public class FourthFragment extends RobotFragment implements
 		SpeakToTextListener {
 
-	Button btOK;
-	Button btVoice;
-	EditText etText;
-	LinearLayout layout;
-	ArrayList<String> currentList = new ArrayList<String>();
-	SharedPreferences pref;
-	boolean haveDeleted = false;
+	static Button btOK;
+	static Button btVoice;
+	static EditText etText;
+	static LinearLayout layout;
+	static ArrayList<String> currentList;
+	static SharedPreferences pref;
+	static boolean haveDeleted = false;
+	static RobotFragmentActivity act;
 	SpeakToText stt;
 	Handler handler = new Handler() {
 
@@ -51,13 +56,16 @@ public class FourthFragment extends RobotFragment implements
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		act = getRobotActivity();
 		pref = getActivity().getSharedPreferences("data", 0);
 		int sizeOfList = pref.getAll().size();
+		currentList = new ArrayList<String>();
 		for (int i = 0; i < sizeOfList; i++) {
 			currentList.add(pref.getString(String.valueOf(i), ""));
 		}
 		stt = new SpeakToText(Languages.VIETNAMESE, this);
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 	}
 
 	@Override
@@ -69,7 +77,9 @@ public class FourthFragment extends RobotFragment implements
 		etText = (EditText) view.findViewById(R.id.etText);
 		layout = (LinearLayout) view.findViewById(R.id.layout);
 		restorePreferences();
-
+		btOK.setEnabled(false);
+		btVoice.setEnabled(false);
+		etText.setEnabled(false);
 		btOK.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -81,9 +91,9 @@ public class FourthFragment extends RobotFragment implements
 
 					savePreferences();
 
-					 btOK.setEnabled(false);
-					 btVoice.setEnabled(false);
-					 etText.setEnabled(false);
+					btOK.setEnabled(false);
+					btVoice.setEnabled(false);
+					etText.setEnabled(false);
 				}
 			}
 		});
@@ -101,12 +111,11 @@ public class FourthFragment extends RobotFragment implements
 				}).start();
 			}
 		});
-		setHasOptionsMenu(true);
 		return view;
 	}
 
-	private void addNewButton(String str) {
-		final Button btRequire = new Button(getRobotActivity());
+	private static void addNewButton(String str) {
+		final Button btRequire = new Button(act);
 		btRequire.setText(str);
 		btRequire.setBackgroundResource(R.drawable.custom_button);
 		btRequire.setGravity(Gravity.FILL);
@@ -118,14 +127,13 @@ public class FourthFragment extends RobotFragment implements
 
 			@Override
 			public void onClick(View v) {
-				if (getRobotActivity().getRobot() != null) {
-					Robot.createRobot(getRobotActivity().getRobot());
-					Controller.currentRobot = getRobotActivity().getRobot();
+				if (act.getRobot() != null) {
+					Robot.createRobot(act.getRobot());
+					Controller.currentRobot = act.getRobot();
 				} else {
-					Toast.makeText(getRobotActivity(),
-							"Bạn hãy chọn Robot trước", Toast.LENGTH_SHORT)
-							.show();
-					getRobotActivity().scan();
+					Toast.makeText(act, "Bạn hãy chọn Robot trước",
+							Toast.LENGTH_SHORT).show();
+					act.scan();
 					return;
 				}
 				TV.receiveOrder(btRequire.getText().toString());
@@ -136,7 +144,13 @@ public class FourthFragment extends RobotFragment implements
 		Handler(btRequire, params);
 	}
 
-	public void savePreferences() {
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.minor_menu, menu);
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	public static void savePreferences() {
 		SharedPreferences.Editor editor = pref.edit();
 		if (haveDeleted == false) {
 			editor.putString(String.valueOf(currentList.size() - 1),
@@ -151,21 +165,20 @@ public class FourthFragment extends RobotFragment implements
 		editor.commit();
 	}
 
-	public void restorePreferences() {
+	public static void restorePreferences() {
 		layout.removeAllViews();
-		for (String str : currentList) {
-			addNewButton(str);
+		for (int i = 0; i < currentList.size(); i++) {
+			addNewButton(currentList.get(i));
 		}
 	}
 
-	public void Handler(final Button btn, final LayoutParams params) {
+	public static void Handler(final Button btn, final LayoutParams params) {
 		if (btn.getLayoutParams() == params) {
 			btn.setOnLongClickListener(new View.OnLongClickListener() {
 
 				@Override
 				public boolean onLongClick(View v) {
-					AlertDialog.Builder builder = new AlertDialog.Builder(
-							getActivity());
+					AlertDialog.Builder builder = new AlertDialog.Builder(act);
 					builder.setMessage("Hãy chọn thao tác");
 					builder.setTitle("Menu");
 					builder.setPositiveButton("Chỉnh sửa",
@@ -216,10 +229,10 @@ public class FourthFragment extends RobotFragment implements
 	private ProgressDialog progressDialog = null;
 
 	protected void showProgress(final String message) {
-		getRobotActivity().runOnUiThread(new Runnable() {
+		act.runOnUiThread(new Runnable() {
 			public void run() {
 				if (progressDialog == null) {
-					progressDialog = new ProgressDialog(getRobotActivity());
+					progressDialog = new ProgressDialog(act);
 				}
 				if (message != null) {
 					progressDialog.setMessage(message);
@@ -237,7 +250,7 @@ public class FourthFragment extends RobotFragment implements
 	}
 
 	protected void cancelProgress() {
-		getRobotActivity().runOnUiThread(new Runnable() {
+		act.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				if (progressDialog != null) {
@@ -288,5 +301,19 @@ public class FourthFragment extends RobotFragment implements
 		msg.obj = message;
 		handler.sendMessage(msg);
 		cancelProgress();
+	}
+
+	public static void setEnable() {
+		btOK.setEnabled(true);
+		btVoice.setEnabled(true);
+		etText.setEnabled(true);
+	}
+
+	public static void deleteAll() {
+		SharedPreferences.Editor editor = pref.edit();
+		editor.clear();
+		editor.commit();
+		currentList = new ArrayList<String>();
+		restorePreferences();
 	}
 }

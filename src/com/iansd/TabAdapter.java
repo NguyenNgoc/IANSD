@@ -1,13 +1,13 @@
 package com.iansd;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+
 import com.fragments.FirstFragment;
 import com.fragments.FourthFragment;
 import com.fragments.SecondFragment;
 import com.fragments.ThirdFragment;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabAdapter extends FragmentPagerAdapter {
 

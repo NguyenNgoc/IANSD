@@ -12,5 +12,7 @@
     <string name="hint">Hãy nhập yêu cầu vào đây</string>
     <string name="scan">Tìm Robot</string>
     <string name="help">Giúp đỡ</string>
+    <string name="locate">Xác định vị trí App</string>
+    <string name="open">Mở ứng dụng</string>
 
 </resources>

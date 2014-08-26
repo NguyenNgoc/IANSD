@@ -18,6 +18,7 @@ import com.fpt.robot.app.RobotFragment;
 import com.iansd.R;
 import com.iansd.Robot;
 import com.iansd.TV;
+import com.iansd.Util;
 
 public class FirstFragment extends RobotFragment implements SpeakToTextListener {
 	Button btVoice;
@@ -87,7 +88,6 @@ public class FirstFragment extends RobotFragment implements SpeakToTextListener 
 			@Override
 			public void run() {
 				if (progressDialog != null) {
-					// progressDialog.cancel();
 					progressDialog.dismiss();
 				}
 			}
@@ -124,6 +124,7 @@ public class FirstFragment extends RobotFragment implements SpeakToTextListener 
 	@Override
 	public void onResult(Result result) {
 		String message = result.result[0].alternative[0].transcript;
+		Util.log("...===>.."+message);
 		TV.receiveOrder(message);
 		cancelProgress();
 	}

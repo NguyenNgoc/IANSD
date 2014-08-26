@@ -4,7 +4,9 @@ import SDK_TV.Controller;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.fpt.robot.app.RobotFragmentActivity;
+import com.fragments.FourthFragment;
 
 public class MainActivity extends RobotFragmentActivity implements TabListener {
 
@@ -28,8 +31,6 @@ public class MainActivity extends RobotFragmentActivity implements TabListener {
 		setContentView(R.layout.main_activity);
 
 		init();
-
-		TV.start();
 	}
 
 	private void init() {
@@ -89,15 +90,87 @@ public class MainActivity extends RobotFragmentActivity implements TabListener {
 			Controller.currentRobot = getRobot();
 			break;
 		}
+
+		case R.id.imConnectTV: {
+			if (getRobot() == null) {
+				Toast.makeText(this, "Hãy kết nối tới Robot trước",
+						Toast.LENGTH_SHORT).show();
+				scan();
+				return false;
+			}
+			TV.context = this;
+			TV.start();
+			break;
+		}
+
 		case R.id.imHelp: {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setIcon(R.drawable.iansd_small);
+			builder.setTitle("Hướng dẫn sử dụng\n");
+			builder.setMessage(" 1. Kết nối tới Robot bằng cách nhấp vào biểu"
+					+ " tượng cái kính lúp trên trên thanh menu\n"
+					+ " 2. Kết nối tới TV bằng cách nhấp vào biểu tượng"
+					+ " hình cái cờ lê bên cạnh cái kính lúp\n" + " 3. \n"
+					+ "   3.1: Nếu muốn dùng điều khiển xem truyền hình :"
+					+ " Sử dụng ứng dụng trên thiết bị Android để"
+					+ " điều khiển\n"
+					+ "   3.2: Nếu muốn dùng cho ứng dụng tìm kiếm hình ảnh,"
+					+ " video, hay tra cứu : Cần mở ứng dụng trên thiết bị"
+					+ " Smart TV trước, rồi dùng ứng dụng trên thiết bị"
+					+ " Android để điều khiển\n"
+					+ " 4. Chúc các bạn vui vẻ và thoải mái với IANSD");
+			builder.setPositiveButton("OK",
+					new DialogInterface.OnClickListener() {
+
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+
+					});
+			builder.show();
 			break;
 		}
 		case R.id.imAboutUs: {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setIcon(R.drawable.iansd_small);
+			builder.setTitle("SMAC Challenge 2014");
+			builder.setMessage("Tên sản phẩm:   IANSD"
+					+ "\nTên nhóm:          BK-TBG" + "\nThành viên nhóm: "
+					+ "\n                 Nguyễn Hữu Ngọc"
+					+ "\n                 Nguyễn Thanh Tùng"
+					+ "\n                 Trương Anh Dũng"
+					+ "\n                 Đào Thị Giang");
+			builder.setPositiveButton("OK",
+					new DialogInterface.OnClickListener() {
+
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+
+					});
+			builder.show();
 			break;
 		}
 		case R.id.imExit: {
 			finish();
 		}
+		}
+		if (item.getTitle().equals("Thêm")) {
+			FourthFragment.setEnable();
+		}
+		if (item.getTitle().equals("Xóa hết")) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Xóa hết");
+			builder.setPositiveButton("Đồng ý",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface arg0, int arg1) {
+							FourthFragment.deleteAll();
+						}
+					});
+			builder.setNegativeButton("Hủy", null);
+			builder.show();
 		}
 		return true;
 	}

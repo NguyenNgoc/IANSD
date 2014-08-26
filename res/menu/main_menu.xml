@@ -2,20 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/imConnectTV"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:showAsAction="ifRoom"
+        android:title="Connect"/>
+    <item
         android:id="@+id/imScan"
         android:icon="@android:drawable/ic_menu_search"
         android:showAsAction="ifRoom"
         android:title="@string/scan"/>
     <item
         android:id="@+id/imHelp"
-        android:icon="@android:drawable/ic_menu_help"
-        android:showAsAction="ifRoom"
-        android:title="@string/help"/>
+        android:orderInCategory="5"
+        android:title="@string/help"/> 
     <item
         android:id="@+id/imAboutUs"
+        android:orderInCategory="4"
         android:title="@string/aboutUs"/>
     <item
         android:id="@+id/imExit"
+        android:orderInCategory="6"
         android:title="@string/exit"/>
 
 </menu>
