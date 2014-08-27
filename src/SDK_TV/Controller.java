@@ -6,6 +6,7 @@ import com.fpt.robot.Robot;
 import com.fpt.robot.RobotException;
 import com.fpt.robot.infrared.RobotInfrared;
 import com.iansd.TV;
+import com.iansd.UseCase;
 import com.iansd.Util;
 
 public class Controller {
@@ -30,10 +31,12 @@ public class Controller {
 	public static void pressKey(String keyName) {
 		if (keyName.equals("power")) {
 			sendRemoteKey(remoteName, KEY_POWER);
+			UseCase.status = 0;
 		} else if (keyName.equals("mute")) {
 			sendRemoteKey(remoteName, KEY_MUTE);
 		} else if (keyName.equals("exit")) {
 			sendRemoteKey(remoteName, KEY_EXIT);
+			UseCase.status = 0;
 		} else if (keyName.equals("up")) {
 			sendRemoteKey(remoteName, KEY_UP);
 		} else if (keyName.equals("down")) {
